@@ -3,6 +3,3 @@
 
 ## Components
 ### What is a Component? 
-
-
-
