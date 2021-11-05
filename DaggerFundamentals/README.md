@@ -3,12 +3,12 @@
 
 ### What is a Dagger? 
 
-Dagger is a library which generates code to initialize classes by instantiating and providing all of its dependencies. It allows the developer to use a class without worrying about initializing all of its dependecies explicity. 
+Dagger is a library which generates code to initialize classes by instantiating and providing all of its dependencies. It allows the developer to use a class without worrying about initializing all of its dependencies explicitly. 
 
 ## Components
 ### What is a Component? 
 
-Components are a way of stating in dagger, which dependencies should be bundled together and made available to a given instance. They povide a way for a class to request dependencies being injected through the `@Inject` annotation.
+Components are a way of stating in dagger, which dependencies should be bundled together and made available to a given instance. They provide a way for a class to request dependencies being injected through the `@Inject` annotation.
 
 In the diagram above AuthComponent and MainComponent are sub-components of AppComponent.
 

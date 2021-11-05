@@ -15,14 +15,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeAuthActiviy(): AuthActivity
-
-
-    companion object{
-        @Provides
-        fun someString(): String{
-            return "This is a test string"
-        }
-    }
+    abstract fun contributeAuthActivity(): AuthActivity
 
 }
