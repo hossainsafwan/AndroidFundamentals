@@ -9,7 +9,12 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule //support library compatible with more versions
 
-@Component(modules = [AndroidSupportInjectionModule::class])
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        ActivityBuildersModule::class
+    ]
+)
 interface AppComponent: AndroidInjector<BaseApplication> {
 
     @Component.Builder
