@@ -2,7 +2,6 @@ package com.example.daggerfundamentals.di
 
 import com.example.daggerfundamentals.AuthActivity
 import dagger.Module
-import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 
 /*
