@@ -8,7 +8,9 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule //support library compatible with more versions
+import javax.inject.Singleton
 
+@Singleton //By annotating a component with a scope we state to Dagger that this component owns this particular scope
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,

@@ -10,6 +10,7 @@ import com.example.daggerfundamentals.BaseApplication
 import com.example.daggerfundamentals.R
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /*
 * All application level dependencies will go inside of this module.
@@ -20,8 +21,8 @@ import dagger.Provides
 @Module
 class AppModule {
 
-    companion object {
         @Provides
+        @Singleton
         fun provideRequestOptions(): RequestOptions {
             return RequestOptions
                 .placeholderOf(R.drawable.white_background)
@@ -29,6 +30,7 @@ class AppModule {
         }
 
         @Provides
+        @Singleton
         fun provideGlideInstance(
             application: BaseApplication,
             requestOptions: RequestOptions
@@ -37,10 +39,9 @@ class AppModule {
         }
 
         @Provides
-        fun providesAppDrawable(application: BaseApplication) : Drawable {
+        @Singleton
+        fun providesAppDrawable(application: BaseApplication): Drawable {
             return ContextCompat.getDrawable(application, R.drawable.logo)!!
         }
-
-    }
 
 }
