@@ -8,9 +8,11 @@ Dagger is a library which generates code to initialize classes by instantiating 
 ## Components
 ### What is a Component? 
 
-Components are a way of stating in dagger, which dependencies should be bundled together and made available to a given instance. They provide a way for a class to request dependencies being injected through the `@Inject` annotation.
-
-In the diagram above AuthComponent and MainComponent are sub-components of AppComponent.
+Components in Dagger decide how objects need to be instantiated and in which order objects need to be instantiated.
+In the diagram above AuthComponent and MainComponent are sub-components of AppComponent. 
+Components also consist of their own scopes which ensures objects are instantiated and retained only for the lifetime that they are needed and 
+not for too long, therefore attenuating overhead. In the example above `Appcomponent` has `@Singleton` scope; `AuthComponent` has `@AuthScope` and
+`MainComponent` has `@MainScope`.
 
 ## Modules
 ### What is a Module?
