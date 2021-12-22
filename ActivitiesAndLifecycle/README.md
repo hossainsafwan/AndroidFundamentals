@@ -12,7 +12,8 @@ A Fragment represents a reusable portion of your app's UI. A fragment defines an
 
 An activity lifecycle consists of the different states an activity goes through based on various inputs from the user.
 
-![activity_lifecycle](https://user-images.githubusercontent.com/22313316/145726483-bd00d4b3-50a0-449a-bdf0-46c55f938dac.png)
+![activity_lifecycle](https://user-images.githubusercontent.com/22313316/145726483-bd00d4b3-50a0-449a-bdf0-46c55f938dac.png)\
+<em>Fig 1: Activity Lifecycle</em>
 
 `onCreate()` : The `onCreate()` method is where you should do any one-time initializations for your activity. For example, in `onCreate()` you inflate the layout, define click listeners, or set up data binding. This is the first method that is called and is called once during the activity's lifecycle.
 
@@ -34,7 +35,9 @@ A fragment is a reusable component in android which has its own lifecycle and la
 
 ### Lifecycle of a fragment and its corelation to its activity
 
-<img src="https://user-images.githubusercontent.com/22313316/145733383-a2c0b71f-699f-48e3-8031-3d54795349e1.png"  width="700" height="650" />
+<img src="https://user-images.githubusercontent.com/22313316/145733383-a2c0b71f-699f-48e3-8031-3d54795349e1.png"  width="700" height="650" />\
+<em>Fig 2: Relationship Between Activity and Fragment Lifecycles</em>
+
 
 `onAttach()`: Called when the fragment is associated with its owner activity.
 
