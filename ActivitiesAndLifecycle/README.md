@@ -21,7 +21,7 @@ An activity lifecycle consists of the different states an activity goes through 
 
 `onResume()`: This is called right after `onStart()` This is also called when you are making the activity active again after it was rendereced inactive due to another android component on the screen.
 
-`onPause()`: This is called when the activity is visile to the user but is inactive. You can go from this state to `onResume()` directly when the activity is made active again.
+`onPause()`: This is called when the activity is visible to the user but is inactive. You can go from this state to `onResume()` directly when the activity is made active again.
 
 `onStop()`: This is called when the activity is no longer visible to the user but is also not destroyed. The lifecycle goes from this state to `onStart()` when the activity is made visible again an example of this state being initiated is when the user minimizes the app.
 
