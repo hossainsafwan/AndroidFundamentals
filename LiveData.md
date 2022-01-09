@@ -42,3 +42,9 @@ This will be used inside of the ViewModel to allow the UI-Controller to only acc
 private val _score = MutableLiveData<Int>()
 val score: LiveData<Int> get() = _score
 ```
+
+## Summary
+
+![Screen Shot 2022-01-09 at 2 59 37 PM](https://user-images.githubusercontent.com/22313316/148698567-dea66849-4df3-4ecf-a104-b8918536c84d.png)
+
+
