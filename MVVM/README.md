@@ -51,4 +51,9 @@ viewModel = ViewModelProvider(this,viewModelFactory).get(ScoreViewModel::class.j
 binding.scoreText.text = viewModel.score.toString()
 ```
 
+# Summary
 
+![Summary](https://user-images.githubusercontent.com/22313316/148665124-e0686fd4-56ba-454e-af9e-da5489ea9edc.png)
+
+
+*Source: [ViewModels Codelabs](https://developer.android.com/codelabs/kotlin-android-training-view-model?index=..%2F..android-kotlin-fundamentals#9)*
