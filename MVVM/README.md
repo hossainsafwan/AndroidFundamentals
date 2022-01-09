@@ -8,7 +8,7 @@ The following is the basic structure of Model View ViewModel architecture
 
 The VeiwModel class allows one ot store and manage UI related data in a lifecycle conscious way. It allows the data to survive device configuration changes such as keyboard availiability and screen rotations. 
 
-The ViewModelFactory class is used to instantiate ViewModel object that survives configuration changes. This factory may or may not contain constructor parameters.
+The ViewModelProvider class is used to instantiate ViewModel object that survives configuration changes. This factory may or may not contain constructor parameters.
 
 If the ViewModel is created inside of the UI controller without the ViewModelProvider, when there is a deivice configuration change like a screen rotation where the UI Controller is destroyed the repective Viewmodel will also be destryoed. 
 
@@ -20,7 +20,8 @@ Example:
 	viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
  ```
 
- The ViewModel should never contain references to fragments, activities, or views, because activities, fragments, and views do not survive configuration changes.
+The ViewModel should never contain references to fragments, activities, or views, because activities, fragments, and views do not survive configuration changes.
+The ViewModel is destroyed when the respective UI-Controller is finished.
 
  # ViewModelFactory
 
