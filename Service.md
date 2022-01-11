@@ -1,6 +1,6 @@
 # Services
 ## What is a service? 
-A service is an application component which performs long running application in the backgroud such as downloading a file or playing music. It dos not require a user interface.
+A service is an application component which performs long running application in the backgroud such as downloading a file or playing music. It does not require a user interface.
 
 # Types of Services
 These are the three different types of services:
