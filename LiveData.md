@@ -11,9 +11,9 @@ LiveData object changes.
 
 - LiveData holds data; LiveData is a wrapper that can be used with any data
 
-- LiveData is lifecycle-aware. When you attach an observer to the LiveData, the observer is associated with a LifecycleOwner (usually an Activity or Fragment). The LiveData only updates observers that are in an active lifecycle state such as STARTED or RESUMED. You can read more about LiveData and observation here.
+- LiveData is lifecycle-aware. When you attach an observer to the LiveData, the observer is associated with a LifecycleOwner (usually an Activity or Fragment). The LiveData only updates observers that are in an active lifecycle state such as STARTED or RESUMED.
 
-To observe an object you need to use a LifecycleOwner. when observing an object from a fragmemnt pne whouls use the viewLifecycleOwner since the view is sometimes destroyed before the fragment is destroyed.
+To observe an object you need to use a LifecycleOwner. When observing an object from a fragmemnt use the viewLifecycleOwner since the view is sometimes destroyed before the fragment is destroyed.
 
 Why use viewLifecycleOwner?
 Fragment views get destroyed when a user navigates away from a fragment, even though the fragment itself is not destroyed. This essentially creates two lifecycles, the lifecycle of the fragment, and the lifecycle of the fragment's view. Referring to the fragment's lifecycle instead of the fragment view's lifecycle can cause subtle bugs when updating the fragment's view. Therefore, when setting up observers that affect the fragment's view you should:
