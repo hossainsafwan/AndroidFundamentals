@@ -2,7 +2,7 @@
 
 LiveData, which is one of the Android Architecture Components, lets you build data objects that notify views when the underlying database changes.
 
-To use the LiveData class, you set up "observers" (for example, activities or fragments) that observe changes in the app's data. LiveData is lifecycle-aware, so it only updates app-component observers that are in an active lifecycle state.
+To use the LiveData class, you set up "observers" (for example, activities or fragments) that observe changes in the app's data. LiveData is lifecycle-aware, so it only updates app-component observers that are in an active lifecycle state (onStart or onResume).
 
 ## Characteristics of LiveData
 
