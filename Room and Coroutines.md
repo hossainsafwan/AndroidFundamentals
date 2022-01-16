@@ -36,4 +36,88 @@ data class SleepNight(
 
 ## DAO
 
+DAO provides convenience methods to create, read, update and delete entities in a database.
+
+When using Room database, the database is queried using Kotlin fucntions. These Kotlin function map to SQL queries. the developer has to define this mapping in the DAO using annotations and Room creates the necessary code needed to complete the mapping.
+
+Example:
+
+```kotlin
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+
+@Dao
+interface SleepDatabaseDao{
+    @Insert
+    fun insert(night: SleepNight)
+
+    @Update
+    fun query(night: SleepNight)
+
+    @Query("SELECT * from daily_sleep_quality_table WHERE nightID = :key")
+    fun get(key: Long): SleepNight?
+
+    @Query("DELETE from daily_sleep_quality_table")
+    fun clear()
+
+    @Query("SELECT * from daily_sleep_quality_table ORDER BY nightID DESC LIMIT 1")
+    fun getTonight(): SleepNight?
+
+    @Query("SELECT * from daily_sleep_quality_table ORDER BY nightID")
+    fun getAllNights(): LiveData<List<SleepNight>>
+
+}
+
+
+```
+
+## Database
+
+Example:
+
+Template script to create database
+```kotlin 
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+
+@Database(entities = [SleepNight::class], version = 1, exportSchema = false)
+abstract class SleepDatabase : RoomDatabase() {
+
+    abstract val sleepDatabaseDao: SleepDatabaseDao
+
+    companion object {
+
+        @Volatile
+        private var INSTANCE: SleepDatabase? = null
+
+        fun getInstance(context: Context): SleepDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
+
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        SleepDatabase::class.java,
+                        "sleep_history_database"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE = instance
+                }
+                return instance
+            }
+        }
+    }
+}
+
+```
+
+# Summary
+
+![Screen Shot 2022-01-16 at 1 43 35 AM](https://user-images.githubusercontent.com/22313316/149650164-9bebba6d-4b0e-469e-a142-a028a81d6a3a.png)
 
