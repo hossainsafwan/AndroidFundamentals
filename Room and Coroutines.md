@@ -8,10 +8,32 @@ The following diagram provides information on which secdtion of the your applica
 
 ![Screen Shot 2022-01-15 at 3 14 50 PM](https://user-images.githubusercontent.com/22313316/149636421-7ebb1432-acd4-4205-a055-f3512aeaacf9.png)
 
-Entity: An entity represents an object along with its properties which is to be stored in a database. Eacgh instance of an entity describes a row in a table. The entity has the mapping which lets Room know how the data is represented and how it can be interacted with. 
+Entity: An entity represents an object along with its properties which is to be stored in a database. Each instance of an entity describes a row in a table. The entity has the mapping which lets Room know how the data is represented and how it can be interacted with. 
 
 Queries: A query is a request foir information from a database table or from a combination of tables. Queries can be of 4 types: Creating, Reading, Updating and Deleting.
 
 Room converts kotlin data classes into entities which can be stred in SQLite database tabels and create functions which can be used to make queries. 
 
-Each enetity is defined as an anotatted data class and interactions with that enetity is done via an anotatewd interface called a data access object or **DAO**.
+Each entity is defined as an anotatted data class and interactions with that entity is done via an anotated interface called a data access object or **DAO**.
+
+## Entity
+
+How to declare an entity:
+
+```kotlin 
+
+import androidx.room.Entity
+
+@Entity(tableName = "daily_sleep_quality_table")
+data class SleepNight(
+    var nightID: Long = 0L,
+    val startTimeMilli: Long = System.currentTimeMillis(),
+    var endTimeMilli: Long = startTimeMilli,
+    var sleepQuality: Int = -1
+)
+
+```
+
+## DAO
+
+
