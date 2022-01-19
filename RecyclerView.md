@@ -12,3 +12,12 @@ RecylerView is able to facilitate showing a large list in a very efficient manne
 
 ## Adapter Pattern
 
+The RecyclerView uses an adapater to transform app data into something the RecyclerView can display without changing how the app stores and processes the data.
+
+To display data in a RecylerView the following is needed:
+- Data to display
+- RecyclerView instance in layout file to be a cotainer for views
+- A layout file for each item of data. 
+- A layout manager which handles the organization of UI copmponents in a view
+- A view holder which extends the `ViewHolder` class. It contains the view information for displaying one item from the item's layout. View holders have the information that the recyclerView uses to move information efficiently around the screen 
+- An adapter which adapts the data to be displayed in a `ViewHolder`. The RecyclerView uses the adapter to figure out how rto display the data on the screen 
