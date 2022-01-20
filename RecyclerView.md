@@ -30,24 +30,47 @@ To display data in a RecylerView the following is needed:
 *RecyclerView Instance in Layout file with LayoutManager attribute*
 ```xml 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sleep_list"
+        android:id="@+id/recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/clear_button"
-        app:layout_constraintTop_toBottomOf="@+id/stop_button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edit_text"
+        app:layout_constraintTop_toTopOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 ```
 
 *Layout for item*
 ```xml<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:textSize="24sp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:layout_width="match_parent"       
-    android:layout_height="wrap_content" />
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="To do Item"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@id/checkBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 *ViewHolder for items as an `inner class` in the adapter*
@@ -85,6 +108,19 @@ class TodoAdapter(var items: List<Todo>):RecyclerView.Adapter<TodoAdapter.ToDoVi
         return items.size
     }
 }
+```
+
+*Set the adapter to the `RecyclerView` inside of an activity or fragment*
+
+```kotlin
+        var toDoList = mutableListOf<Todo>(
+            Todo("Get groceries", false),
+            Todo("Finish android fundamentals Codelabs", true),
+            Todo(";)", false),
+            )
+
+        val adapter = TodoAdapter(toDoList)
+        binding.recyclerView.adapter = adapter
 ```
 
 
