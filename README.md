@@ -304,7 +304,7 @@ What is Room?
 
 Room is a database library that is part of the Android Jetpack libraries. It is an abstraction on top of SQLite database. Room simplifies the process of setting up configuring and interacting with the database. Room also provides the ability for your app to interact with the database using ordinary function calls. It has a query syntax allowing you to search data.
 
-The following diagram provides information on which secdtion of the your application, Room operates in:
+The following diagram provides information on which section of the your application, Room operates in:
 
 ![Screen Shot 2022-01-15 at 3 14 50 PM](https://user-images.githubusercontent.com/22313316/149636421-7ebb1432-acd4-4205-a055-f3512aeaacf9.png)
 
