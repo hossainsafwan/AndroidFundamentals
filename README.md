@@ -227,6 +227,7 @@ binding.scoreText.text = viewModel.score.toString()
 
 # Repository
 
+The repositoy class abstracts access to multiple data sources. 
 
 # Coroutines
 
@@ -308,9 +309,9 @@ The following diagram provides information on which section of the your applicat
 
 ![Screen Shot 2022-01-15 at 3 14 50 PM](https://user-images.githubusercontent.com/22313316/149636421-7ebb1432-acd4-4205-a055-f3512aeaacf9.png)
 
-Entity: An entity represents an object along with its properties which is to be stored in a database. Each instance of an entity describes a row in a table. The entity has the mapping which lets Room know how the data is represented and how it can be interacted with. 
+Entity: An entity represents an object along with its properties which is to be stored in a database. Each instance of an entity describes a table in a database. The properties of an entity represent the columns of the table. 
 
-Queries: A query is a request foir information from a database table or from a combination of tables. Queries can be of 4 types: Creating, Reading, Updating and Deleting.
+Queries: A query is a request for information from a database table or from a combination of tables. Queries can be of 4 types: Creating, Reading, Updating and Deleting.
 
 Room converts kotlin data classes into entities which can be stred in SQLite database tabels and create functions which can be used to make queries. 
 
@@ -326,6 +327,7 @@ import androidx.room.Entity
 
 @Entity(tableName = "daily_sleep_quality_table")
 data class SleepNight(
+    @PrimaryKey(autogenerate = true)	
     var nightID: Long = 0L,
     val startTimeMilli: Long = System.currentTimeMillis(),
     var endTimeMilli: Long = startTimeMilli,
@@ -336,7 +338,7 @@ data class SleepNight(
 
 ## DAO
 
-DAO provides convenience methods to create, read, update and delete entities in a database.
+DAO provides methods to create, read, update and delete entities in a database.
 
 When using Room database, the database is queried using Kotlin fucntions. These Kotlin function map to SQL queries. the developer has to define this mapping in the DAO using annotations and Room creates the necessary code needed to complete the mapping.
 
@@ -352,22 +354,22 @@ import androidx.room.Update
 @Dao
 interface SleepDatabaseDao{
     @Insert
-    fun insert(night: SleepNight)
+    suspend fun insert(night: SleepNight)
 
     @Update
-    fun query(night: SleepNight)
+    suspend fun query(night: SleepNight)
 
     @Query("SELECT * from daily_sleep_quality_table WHERE nightID = :key")
-    fun get(key: Long): SleepNight?
+    suspend fun get(key: Long): SleepNight?
 
     @Query("DELETE from daily_sleep_quality_table")
     fun clear()
 
     @Query("SELECT * from daily_sleep_quality_table ORDER BY nightID DESC LIMIT 1")
-    fun getTonight(): SleepNight?
+    suspend fun getTonight(): SleepNight?
 
     @Query("SELECT * from daily_sleep_quality_table ORDER BY nightID")
-    fun getAllNights(): LiveData<List<SleepNight>>
+    suspend fun getAllNights(): LiveData<List<SleepNight>>
 
 }
 
@@ -379,6 +381,7 @@ interface SleepDatabaseDao{
 Example:
 
 Template script to create database
+
 ```kotlin 
 import android.content.Context
 import androidx.room.Database
@@ -392,11 +395,11 @@ abstract class SleepDatabase : RoomDatabase() {
 
     companion object {
 
-        @Volatile
+        @Volatile //Write's to this database is immediately made available to other threads
         private var INSTANCE: SleepDatabase? = null
 
         fun getInstance(context: Context): SleepDatabase {
-            synchronized(this) {
+            synchronized(this) { // protected from concurrent execution by multiple threads
                 var instance = INSTANCE
 
                 if (instance == null) {
@@ -425,9 +428,15 @@ abstract class SleepDatabase : RoomDatabase() {
 
 # Flows
 
+
+
 # Clean Architecture
 
+
+
 # Use Cases
+
+
 
 
 
