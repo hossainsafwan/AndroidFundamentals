@@ -327,6 +327,7 @@ import androidx.room.Entity
 
 @Entity(tableName = "daily_sleep_quality_table")
 data class SleepNight(
+    // A primary key is the column or columns that contain values that uniquely identify each row in a table
     @PrimaryKey(autogenerate = true)	
     var nightID: Long = 0L,
     val startTimeMilli: Long = System.currentTimeMillis(),
