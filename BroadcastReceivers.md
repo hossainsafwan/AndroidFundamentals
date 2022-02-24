@@ -6,6 +6,6 @@ A broadcast in Android is a system wide event. Events such as an incoming sms, p
 
 ## What is a Broadcast Receiver?
 
-A broadcast receiver is a compoent which allows the system to notify the application of a broadcast without the application running.
+A broadcast receiver is a component which allows the system to notify the application of a broadcast without the application running.
 Applications can also send broadcasts to let other apps in the system know of a particular event occurring.
 Although broadcast receivers don't display a user interface, they may create a status bar notification to alert the user when a broadcast event occurs
