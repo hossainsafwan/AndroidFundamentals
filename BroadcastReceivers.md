@@ -2,7 +2,7 @@
 
 ## What is a Broadcast?
 
-A broadcast in Android is a system wide event. Events such as an incoming sms, phone-call, notification to satte the battery of the device is low. These are examples of broadcasts.
+A broadcast in Android is a system wide event. Events such as an incoming sms, phone-call, notification to state the battery of the device is low. These are examples of broadcasts.
 
 ## What is a Broadcast Receiver?
 
