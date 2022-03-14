@@ -128,4 +128,26 @@ class TodoAdapter(var items: List<Todo>):RecyclerView.Adapter<TodoAdapter.ToDoVi
 
 DiffUtil is a utility class whih compares differences between two lists and provides a list of update operations to convert one list into another list. It uses Eugene Myers difference alogorithm to accomplish this. 
 
-This is use as an alternative to notifyDataSetChanged() which is not efficient as it updates all the views in the recyclerview
+The advanatage to using diffUtils is that only the views for which the data has changed will be redrawn and the other views in the recylcerview will remain the same.
+
+This is an alternative to notifyDataSetChanged() which is not efficient as it updates all the views in the recyclerview.
+
+```kotlin
+class ListDiffUtil(private val oldList: List<Person>, private val newList: List<Person>): DiffUtil.Callback() {
+    override fun getOldListSize() = oldList.size
+
+    override fun getNewListSize() = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) = oldList[oldItemPosition].id == newList[newItemPosition].id
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        if (oldList[oldItemPosition].id != newList[newItemPosition].id
+            || oldList[oldItemPosition].age != newList[newItemPosition].age
+            || oldList[oldItemPosition].name != newList[newItemPosition].name) {
+            return false
+        }
+        return true
+    }
+}
+```
+
