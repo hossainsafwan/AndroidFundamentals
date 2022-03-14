@@ -124,3 +124,8 @@ class TodoAdapter(var items: List<Todo>):RecyclerView.Adapter<TodoAdapter.ToDoVi
 ```
 
 
+## DiffUtil
+
+DiffUtil is a utility class whih compares differences between two lists and provides a list of update operations to convert one list into another list. It uses Eugene Myers difference alogorithm to accomplish this. 
+
+This is use as an alternative to notifyDataSetChanged() which is not efficient as it updates all the views in the recyclerview
