@@ -4,6 +4,7 @@ Lessons for Android Fundamentals
 - [Activities and Fragments](#activities-and-fragments)
 - [MVVM](#mvvm)
 - [View](#fragment-navigation)
+- [View Binding](#view-binding) 
 - [ViewModels](#view-models)
 - [Repository](#repository)
 - [Coroutines](#coroutines)
@@ -168,7 +169,18 @@ It is defined in the layout file of one of the activities in the following manne
 </layout>
 
 ```
+# View Binding
 
+How to turn view binding on in the module level `build.gradle`
+
+```kotlin
+android {
+    ...
+    buildFeatures {
+        viewBinding = true
+    }
+}
+```
 
 # View Models
 
