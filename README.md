@@ -3,7 +3,7 @@ Lessons for Android Fundamentals
 
 - [Activities and Fragments](#activities-and-fragments)
 - [MVVM](#mvvm)
-- [View](#fragment-navigation)
+- [Fragment Navigation](#fragment-navigation)
 - [View Binding](#view-binding) 
 - [ViewModels](#view-models)
 - [Repository](#repository)
@@ -178,7 +178,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version") //add here.
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version") 
     }
 }
 ```
@@ -187,8 +187,14 @@ buildscript {
 ```kotlin
 // Module level build.gradle.
 plugins {
-    id 'androidx.navigation.safeargs'// add here.
+    id 'androidx.navigation.safeargs'
 }
+```
+*The following code is how to navigate to SecondFragment from ListFragment*
+
+```kotlin
+   val action = ListFragmentDirections.actionListFragmentToSecondFragment()
+   Navigation.findNavController(view).navigate(action)
 ```
 
 # View Binding
