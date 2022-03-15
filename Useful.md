@@ -42,3 +42,42 @@ The `compile sdk version` is the the version of Android that the build tools use
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 ```
+## SafeArgs
+
+*In order to navigate to a different from the current fragment one has to add the follow dependencies to the **project-level** `build.gradle` file*
+
+```kotlin
+// Project level build.gradle 
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version") //add here.
+    }
+}
+```
+
+*We will also need to add the following plugin to the **module-level** `build.gradle` file*
+
+```kotlin
+// Module level build.gradle.
+plugins {
+    id 'androidx.navigation.safeargs'// add here.
+}
+```
+
+## View Binding
+
+How to turn view binding on in the module level `build.gradle`
+
+```kotlin
+android {
+    ...
+    buildFeatures {
+        viewBinding = true
+    }
+}
+```
+
+
