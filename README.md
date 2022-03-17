@@ -169,7 +169,7 @@ It is defined in the layout file of one of the activities in the following manne
 </layout>
 
 ```
-*In order to navigate to a different from the current fragment one has to add the follow dependencies to the **project-level** `build.gradle` file*
+In order to navigate to a different fragment from the current fragment one has to add the follow dependencies to the **project-level** `build.gradle` file
 
 ```kotlin
 // Project level build.gradle 
@@ -182,7 +182,7 @@ buildscript {
     }
 }
 ```
-*We will also need to add the following plugin to the **module-level** `build.gradle` file*
+We will also need to add the following plugin to the **module-level** `build.gradle` file
 
 ```kotlin
 // Module level build.gradle.
@@ -190,7 +190,7 @@ plugins {
     id 'androidx.navigation.safeargs'
 }
 ```
-*The following code is how to navigate to SecondFragment from ListFragment*
+The following code is how to navigate to SecondFragment from ListFragment
 
 ```kotlin
    val action = ListFragmentDirections.actionListFragmentToSecondFragment()
