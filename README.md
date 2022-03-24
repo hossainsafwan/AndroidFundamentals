@@ -2,6 +2,7 @@
 Lessons for Android Fundamentals
 
 - [Activities and Fragments](#activities-and-fragments)
+- [Architectural Design Patterns](#architectural-design-patterns)
 - [MVVM](#mvvm)
 - [Fragment Navigation](#fragment-navigation)
 - [View Binding](#view-binding) 
@@ -75,6 +76,31 @@ A fragment is a reusable component in android which has its own lifecycle and la
 `onStop()`: Called when the fragment is no longer visible on screen; parallel to the activity's onStop().
 
 `onDestroyView()`: Called when the fragment's view is no longer needed, to clean up the resources associated with that view.
+
+# Architectural Design Patterns
+
+The purpose of architecural design patterns is to assist in 4 main categories: Robustness, Testability, Modularity, Extensibility.
+
+1. Robustness: This refers to the ability to quickly make small changes to design, suggested by product to existing features in the application
+2. Testability: This refers to having the ability to unit test both the UI and business logic of the application. having thew ability to tes both the UI and business logic allows us to build more stable applications. MVP and MVVM are great for unit testing both business and UI logic. MVC, allows us an easy way to test business logic but not UI logic.
+3. Modularity: This allows us to keep each individual class much smaller and more strictly follow the single-purpose principle which also makes the code more readable.
+4. Extensability: Following a proper architectural design pattern will also allow us to easily extend the applications and build new features. As new features will not adversely affect old features, due to sepearion of concerns. 
+
+## Types of Architectural Design Patterns in Android
+
+There are three main types of design poatterns in Android:
+
+1. MVC
+2. MVP
+3. MVVM
+
+    | MVC | MVP | MVVM
+--- | --- | --- | ---
+**Architecture** | ![MVC](https://user-images.githubusercontent.com/22313316/159808718-33b0b711-299d-4fa2-a6c2-2d4bb6ef66b0.png) | <img src="https://user-images.githubusercontent.com/22313316/159794641-837f6d11-164b-42b0-aee8-37a04d2b9c15.png"/> | <img src="https://user-images.githubusercontent.com/22313316/138629117-c12744c3-8ace-466f-8401-23567d94e7d6.png"/>
+**View** | The XML elements refer to the views. The View is unaware of the controller. | Activity or Fragment is the View. The View holds a reference of the presenter but va an interface. | Activity or Fragment is the View. The View holds an instabnce of the ViewModel.
+**Model** | Model does not contain reference to view or controller making it easily unit testable | img MVP | Model does not contain reference to ViewModel or View. The repository is responsible of getting the data or updaing the data in the model. Any change in model is updated via LiveData/State Flows
+**Controller/Presenter/ViewModel** | Controller is the Activity in the architectural pattern and is tightly coupled with the view making the ui-logic difficult to test | The presenter is instatiated with an instance of the view. The presenter and the view communicate via an interface. This makes the UI logic in the presenter testable. The View has an instance of the presenter. | The view has an instnce of the ViewModel. The ViewModel is observed on the view. The ViewModel has an instance of the repository. The UI-Logic inside the viewmodel can also be unit-tested very well due to this loose coupling. 
+
 
 # MVVM
 
