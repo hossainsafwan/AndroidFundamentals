@@ -88,7 +88,7 @@ The purpose of architecural design patterns is to assist in 4 main categories: R
 
 ## Types of Architectural Design Patterns in Android
 
-There are three main types of design poatterns in Android:
+There are three main types of architectural design patterns in Android:
 
 1. MVC
 2. MVP
