@@ -16,7 +16,7 @@ The `compile sdk version` is the the version of Android that the build tools use
 
     // Room
     implementation "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5" //  plugins { id 'kotlin-kapt' } needed for kapt
 
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.2.5"
@@ -40,7 +40,8 @@ The `compile sdk version` is the the version of Android that the build tools use
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0' //  plugins { id 'kotlin-kapt' } needed for kapt
+
 ```
 ## SafeArgs
 
