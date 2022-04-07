@@ -54,7 +54,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version") //add here.
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
     }
 }
 ```
@@ -64,7 +64,7 @@ buildscript {
 ```kotlin
 // Module level build.gradle.
 plugins {
-    id 'androidx.navigation.safeargs'// add here.
+    id 'androidx.navigation.safeargs.kotlin'
 }
 ```
 
