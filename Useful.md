@@ -64,9 +64,12 @@ buildscript {
 ```kotlin
 // Module level build.gradle.
 plugins {
-    id 'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs'
 }
 ```
+
+*In order to pass data between one fragment to another follow the [following steps](https://www.section.io/engineering-education/safe-args-in-android/#passing-values-to-the-argument)*
+
 
 ## View Binding
 
