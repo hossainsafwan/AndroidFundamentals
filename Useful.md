@@ -78,6 +78,7 @@ How to turn view binding on in the module level `build.gradle`
 ```kotlin
 android {
     ...
+    // Module level build.gradle.
     buildFeatures {
         viewBinding = true
     }
