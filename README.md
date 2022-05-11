@@ -500,6 +500,39 @@ abstract class SleepDatabase : RoomDatabase() {
 
 # Clean Architecture
 
+One of the main reasons for using clean architecture is to avoid bloating our view models as out application starts gettinh larger and larger.
+To avoid this issue an optional domain layer is introduced which consists of use cases which perform one call, such as getAccounts, deleteAccount or addAccount.
+
+The following Diagram shows overview of Clean Architecture:
+
+![Screen Shot 2022-05-11 at 11 10 04 AM](https://user-images.githubusercontent.com/22313316/167884630-71032188-356c-4188-b8b2-e53553c9fd89.png)
+
+
+## The Data Layer
+
+The data layer consists of application data and business logic. The business logic determines how data for the application should be created, stored and changed. 
+The data layer is made of repositories which can interact with one or more data sources.
+
+The data layer consists of repositories and data sources.
+
+### Data Sources
+
+Data sources provides the data that the app needs to function. They can present data from the network, local database or even from memory. They have the reponsibility of dealing with only one ource of data or one unit of business logic such as articles, movies, or books.
+
+### Repositories
+
+The repositories are responsible for exposing the datya to the rest of the app but thety are also respobsioble for centralizing changes, resolving conflicts between multiple data sources abnd containing business logic.
+
+One repositoy should deal with one data type only. So, payments should have payments repository and movies should have a seperate repository.
+
+The entry point to the data layer is always the repository. 
+
+The data exposed by the data layer should be immutable so other classes cannot tamper with it. This would risk putting the valeues being received in an inconsistent state. 
+
+Immutable data can also be safely handled by multiple threads. 
+
+
+
 
 
 # Use Cases
