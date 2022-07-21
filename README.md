@@ -15,6 +15,7 @@ Lessons for Android Fundamentals
 - [Clean Architecture](#clean-architecture)
 - [Use Cases](#use-cases)
 - [Useful](https://github.com/hossainsafwan/AndroidFundamentals/blob/master/Useful.md)
+- [Gradle](#gradle)
 
 
 
@@ -536,6 +537,33 @@ Immutable data can also be safely handled by multiple threads.
 
 
 # Use Cases
+
+# Gradle
+
+Gradle is a build automator. It takes all the configurations stated in the project and app level build.gradle files and executes gradle tasks in the correct order to put everything together in an executable or apk file.
+
+There are mainly two types of Gradle files in Android App:
+Project Level Gradle and Module Level Gradle.
+
+The project level gradle file has configuration specific to our project.
+The app level build gradle file has Configuration specific to the app itself.
+
+There are two different versions of Gradle: 
+i) Gradle Groovy 
+ii) Gradle Kotlin DSL (Domain-specific language)
+
+## Gradle Wrapper:
+
+Every Android project has a gradlew file which is a binary file which is executable.
+
+gradlew file ensures the specific version of gradle that is to be installed and runs the specific tasks.
+
+Everything gradle can do is considered a task.
+and the gradlew file can be used to run specifc tasks ./gradlew build will build an app specified in the project.
+
+
+
+
 
 
 
