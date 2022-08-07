@@ -540,7 +540,7 @@ Immutable data can also be safely handled by multiple threads.
 
 # Gradle
 
-Gradle is a build automator. It takes all the configurations stated in the project and app level build.gradle files and executes gradle tasks in the correct order to put everything together in an executable or apk file.
+Gradle is a build automation tool. A build automation tool is used to automate the creation of applications. The building process includes compiling, linking, and packaging the code. The process becomes more consistent with the help of build automation tools. It takes all the configurations stated in the project and app level build.gradle files and executes gradle tasks in the correct order to put everything together in an executable or apk file.
 
 There are mainly two types of Gradle files in Android App:
 Project Level Gradle and Module Level Gradle.
@@ -549,8 +549,9 @@ The project level gradle file has configuration specific to our project.
 The app level build gradle file has Configuration specific to the app itself.
 
 There are two different versions of Gradle: 
-i) Gradle Groovy 
-ii) Gradle Kotlin DSL (Domain-specific language)
+
+1. Gradle Groovy 
+2. Gradle Kotlin DSL (Domain-specific language)
 
 ## Gradle Wrapper:
 
@@ -561,13 +562,6 @@ gradlew file ensures the specific version of gradle that is to be installed and 
 Everything gradle can do is considered a task.
 and the gradlew file can be used to run specifc tasks ./gradlew build will build an app specified in the project.
 
+# Dagger
 
-
-
-
-
-
-
-
-
-
+[Codelab](https://developer.android.com/codelabs/android-dagger#0)
