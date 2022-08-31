@@ -17,6 +17,7 @@ Lessons for Android Fundamentals
 - [Useful](https://github.com/hossainsafwan/AndroidFundamentals/blob/master/Useful.md)
 - [Gradle](#gradle)
 - [Dagger](#dagger)
+- [Testing](#testing)
 
 
 
@@ -566,3 +567,16 @@ and the gradlew file can be used to run specifc tasks ./gradlew build will build
 # Dagger
 
 [Codelab](https://developer.android.com/codelabs/android-dagger#0)
+
+# Testing
+
+Why do we need tests?
+
+During development everytime you add code you might have to test the same interactions over and over again. This is incredibly time consuming an d takes a huge amount of time. To overcome this issue we add tests which will automatically test the behavior of the old features of our app as new features keep getting added. This saves time since if a new piece of code was added which leads to unexpected behavior it will be detected via failing tests.
+
+There are mainly three types of tests:
+
+- Unit tests
+- Integration tests
+- UI tests (End to end tests)
+
