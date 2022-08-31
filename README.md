@@ -580,3 +580,15 @@ There are mainly three types of tests:
 - Integration tests
 - UI tests (End to end tests)
 
+## Unit Tests
+
+This tests single units of our app such as testing the functions of a class. This should make up the bulk of the tests in our app, which is approximately 70%.
+
+## Integration Tests
+
+Tests how two components of our app work together such as Fragment and ViewModel.
+
+## UI-Tests
+
+This is also known as End to end tests. These are test which check if many or all components of your app work together well and if the UI looks like it should. 
+
