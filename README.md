@@ -592,3 +592,36 @@ Tests how two components of our app work together such as Fragment and ViewModel
 
 This is also known as End to end tests. These are test which check if many or all components of your app work together well and if the UI looks like it should. 
 
+## Test Driven Development
+
+The main principle of test deriven development is that we write our unit tests before we write the implementation of our function.
+
+There are three steps for TDD
+
+- Write the function signature
+- Write the test cases foe that function
+- Write the function logic so the tests pass
+
+Another principle of TDD is that one should have only one assertion per test. This ensures whether our test succeeds or our test does not succeed. 
+
+## What makes a good test?
+
+There are three compoenets to a good test. These are
+
+- Scope 
+- Speed 
+- Fidelity
+
+### Scope
+
+This determines how much of our code is covered by a single test case.
+
+### Speed
+
+Determines how fast our test case runs. we want test cases to run fast since fast test cases means we will run them often and that will help us catch more bugs. 
+
+### Fidelity
+
+How close is our test case to the rela world scenario. 
+
+We also want to prevent flaky tests which sometimes succeed and sometimes fail. 
