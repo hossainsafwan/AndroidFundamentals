@@ -18,6 +18,7 @@ Lessons for Android Fundamentals
 - [Gradle](#gradle)
 - [Dagger](#dagger)
 - [Testing](#testing)
+- [Regression Testing](#regression-testing)
 
 
 
@@ -606,7 +607,7 @@ Another principle of TDD is that one should have only one assertion per test. Th
 
 ## What makes a good test?
 
-There are three compoenets to a good test. These are
+There are three compoenets to a good test. These are:
 
 - Scope 
 - Speed 
@@ -627,5 +628,8 @@ How close is our test case to the rela world scenario.
 We also want to prevent flaky tests which sometimes succeed and sometimes fail. Example: test a function whch c=produces a random number between 1 and 5 and you put an assetion of 2. So, when the random number si 2 the test passes but for any of the other numbers the test fails. 
 
 Outcomes of one test case should never depend on outcomes of a different test case. 
+
+# Regression Testing
+
 
 
