@@ -22,7 +22,6 @@ Lessons for Android Fundamentals
 
 
 
-
 # Activities and Fragments
 
 ### What is an activity in android?
@@ -653,6 +652,37 @@ interface AppComponent {
 ```
 
 With the `inject(activity: RegistrationActivity)` method in the `@Component` interface, we're telling Dagger that `RegistrationActivity` requests injection and that it has to provide the dependencies which are annotated with `@Inject` (i.e. `RegistrationViewModel` as we defined in the previous step)
+
+`@Module`
+Similat yo Components, modules tell dagger how to provide instances of a certain type. Dependencies are defined using `@Provides` and `@Binds` annotation. 
+
+The `@Binds` annotation is used to tell dagger the implementation it needs to create an instance of the `Storage` interface. In order to use the `@Binds` annotation we have to create an `abstract` method which ultimately also means that the class also has to be defined as `abstract`. The parameter of the method is the implementation of the interface. The following snippet defines how to use the `@Binds` annotation to tell dagger how to instantiate an inter=face with a specific implmementation. 
+
+```kotlin
+import com.example.android.dagger.storage.SharedPreferencesStorage
+import com.example.android.dagger.storage.Storage
+import dagger.Binds
+import dagger.Module
+
+@Module
+abstract class StorageModule {
+
+    @Binds
+    abstract fun provideStorage(storage: SharedPreferencesStorage): Storage
+}
+```
+The application fraph however, needs to know about the `StorageModule` we do this inside of the `AppComponent` in the following manner. 
+
+```kotlin
+// Definition of a Dagger component that adds info from the StorageModule to the graph
+@Component(modules = [StorageModule::class])
+interface AppComponent {
+    
+    // Classes that can be injected by this Component
+    fun inject(activity: RegistrationActivity)
+}
+```
+
 
 # Testing
 
