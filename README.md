@@ -582,7 +582,32 @@ We can use the factory pattern to instantiate classes but that can also lead to 
 
 Dagger is responsible for creating the application graph of an application which is all the classes of its app and its dependenices.
 
+## Adding Dagger to a project
 
+In the app level build.gradle file add the following:
+
+```kotlin
+plugins {
+   id 'com.android.application'
+   id 'kotlin-android'
+   id 'kotlin-android-extensions'
+   id 'kotlin-kapt'
+}
+
+...
+
+dependencies {
+    ...
+    def dagger_version = "2.40"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+}
+
+```
+
+Dagger is implemented using Java's annotation processor and generates code at compile time using an annotation processor, which are supported in Kotlin with the `kapt` compiler plugin. 
+
+The library `implementation "com.google.dagger:dagger:$dagger_version"` consists of all the annotations which can be used in the application and the `dagger-compiler` is the annotation processor that will generate the code for us.  
 
 # Testing
 
