@@ -567,7 +567,22 @@ and the gradlew file can be used to run specifc tasks ./gradlew build will build
 
 # Dagger
 
-[Codelab](https://developer.android.com/codelabs/android-dagger#0)
+[Dagger Codelab](https://developer.android.com/codelabs/android-dagger#0)
+
+Implementing dependency injection provides you with the following advantages:
+
+- Reusability of code.
+- Ease of refactoring.
+- Ease of testing.
+
+What is dependency inject and why do we need Dagger?
+
+Dependency injection is simply a way of providing a class all of the classes it requires to instantiate itself and function properly. This can howveer lead to a lot of boilerplate code being written since a class can depend on other classes, which can further depend on other classes. 
+We can use the factory pattern to instantiate classes but that can also lead to a lot of boilerplate code. To prevent this from happening we need a library which can automate the process of provdong a class with its dependencies for us. This libarray is called Dagger.
+
+Dagger is responsible for creating the application graph of an application which is all the classes of its app and its dependenices.
+
+
 
 # Testing
 
