@@ -671,7 +671,7 @@ abstract class StorageModule {
     abstract fun provideStorage(storage: SharedPreferencesStorage): Storage
 }
 ```
-The application fraph however, needs to know about the `StorageModule` we do this inside of the `AppComponent` in the following manner. 
+The application graph however, needs to know about the `StorageModule` we do this inside of the `AppComponent` in the following manner. 
 
 ```kotlin
 // Definition of a Dagger component that adds info from the StorageModule to the graph
@@ -682,6 +682,13 @@ interface AppComponent {
     fun inject(activity: RegistrationActivity)
 }
 ```
+However oour `SharedPreferencesStorage` needs an instance of `Context`. Context is provided by the Android sysdtem and therfore is created outside of the graph. To provide dependencies created outside of the graph we need to use `@BindsInstance`. 
+
+The following is the dependency graph. 
+
+![Screen Shot 2022-09-25 at 2 16 25 PM](https://user-images.githubusercontent.com/22313316/192158831-99cbb535-0d79-40a1-954d-e55a901c04e3.png)
+
+
 
 
 # Testing
