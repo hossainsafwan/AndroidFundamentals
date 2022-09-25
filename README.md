@@ -793,6 +793,44 @@ interface AppComponent {
 ```
 In order to scope the component. We should declare the scope not by its purpose such as `@RegistrationScope` but by the lifetime it fulfills such as `@ActivityScope`.
 
+So, we have to create a file and call it `ActvityScope` and declare the annotation.
+
+```kotlin
+import javax.inject.Scope
+
+@Scope
+@MustBeDocumented
+@Retention(value = AnnotationRetention.RUNTIME)
+annotation class ActivityScope
+
+```
+
+We then set the RegistrationComponent to that scope
+
+```kotlin
+@ActivityScope
+@Subcomponent
+interface RegistrationComponent {
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(): RegistrationComponent
+    }
+    // CLasses which can be injected by this component
+    fun inject(activity: RegistrationActivity)
+    fun inject(fragment: EnterDetailsFragment)
+    fun inject(fragment: TermsAndConditionsFragment)
+}
+
+```
+and then set the viewmodel to that scope as well
+
+```kotlin
+@ActivityScope
+class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
+...
+}
+```
 
 
 # Testing
