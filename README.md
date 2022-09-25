@@ -624,6 +624,7 @@ class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
 In the snippet above the `@Inject` annotation tells dagger how ti create the `RegistrationViewModel` and that `RegistrationViewModel` has a dependency which is of type `UserManager`. To add an annotation to a constructor in Kotlin one has to add the keyword `constructor` and instrodue the annotation just before it.
 
 Dagger however doesn't know how to create instances of UserManager so the same has to be done to the constructor of the UserManager.
+
 ```kotlin
 class UserManager @Inject constructor(private val storage: Storage) {
     ...
@@ -635,7 +636,23 @@ Certain classes however, are instatiated by the the system such as Activities an
 
 When the `@Inject` annotation is used with a field it is telling dagger that it needs to populate the field with instances of its type.
 
+`@Component`
 
+We want dagger to create the graph of dependencies and be able to give us these dependecies from the graph.To make dagger do it we need to create an interface and annotate it with `@Component`. Inside the interace we let dagger know that `RegistrationActivity` requests injection. 
+
+```kotlin
+import com.example.android.dagger.registration.RegistrationActivity
+import dagger.Component
+
+// Definition of a Dagger component
+@Component
+interface AppComponent {
+    // Classes that can be injected by this Component
+    fun inject(activity: RegistrationActivity)
+}
+```
+
+With the `inject(activity: RegistrationActivity)` method in the `@Component` interface, we're telling Dagger that `RegistrationActivity` requests injection and that it has to provide the dependencies which are annotated with `@Inject` (i.e. `RegistrationViewModel` as we defined in the previous step)
 
 # Testing
 
