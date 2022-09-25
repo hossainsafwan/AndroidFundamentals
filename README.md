@@ -713,6 +713,11 @@ The following line inside `RegistrationActivity` requests dagger to populate the
 (application as MyApplication).appComponent.inject(this)
 ```
 
+## Scoping
+
+In order to use the same instance of a class as dependency every time we can use something called scoping. 
+
+
 
 # Testing
 
