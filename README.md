@@ -682,13 +682,36 @@ interface AppComponent {
     fun inject(activity: RegistrationActivity)
 }
 ```
-However oour `SharedPreferencesStorage` needs an instance of `Context`. Context is provided by the Android sysdtem and therfore is created outside of the graph. To provide dependencies created outside of the graph we need to use `@BindsInstance`. 
+However our `SharedPreferencesStorage` needs an instance of `Context`. Context is provided by the Android sysdtem and therfore is created outside of the graph. To provide dependencies created outside of the graph we need to use `@BindsInstance`. 
 
 The following is the dependency graph. 
 
 ![Screen Shot 2022-09-25 at 2 16 25 PM](https://user-images.githubusercontent.com/22313316/192158831-99cbb535-0d79-40a1-954d-e55a901c04e3.png)
 
+In android the Dagger graph generally lives inside thre APplication class since you want to graph to bne in memory as long as the app is running.  This way the grah is attached to the app's lifecycle. In our case we also want to have the application Context available in the graph. 
 
+```kotlin
+open class MyApplication : Application() {
+
+    // Instance of the AppComponent that will be used by all the Activities in the project
+    val appComponent: AppComponent by lazy {
+        // Creates an instance of AppComponent using its Factory constructor
+        // We pass the applicationContext that will be used as Context in the graph
+        DaggerAppComponent.factory().create(applicationContext)
+    }
+
+    open val userManager by lazy {
+        UserManager(SharedPreferencesStorage(this))
+    }
+}
+
+```
+
+The following line inside `RegistrationActivity` requests dagger to populate the dependencies of `RegistrationActivity`.
+```kotlin
+// Request Dagger to inject dependencies
+(application as MyApplication).appComponent.inject(this)
+```
 
 
 # Testing
