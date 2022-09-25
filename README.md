@@ -631,6 +631,11 @@ class UserManager @Inject constructor(private val storage: Storage) {
 ```
 `Storage` however is an interface so we have to tell dagger how to instantiate it in a different manner.
 
+Certain classes however, are instatiated by the the system such as Activities and Fragments so we cannot add `@Inject` to its constructor instead we must use field injection. 
+
+When the `@Inject` annotation is used with a field it is telling dagger that it needs to populate the field with instances of its type.
+
+
 
 # Testing
 
