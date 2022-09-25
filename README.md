@@ -605,9 +605,23 @@ dependencies {
 
 ```
 
+
 Dagger is implemented using Java's annotation processor and generates code at compile time using an annotation processor, which are supported in Kotlin with the `kapt` compiler plugin. 
 
 The library `implementation "com.google.dagger:dagger:$dagger_version"` consists of all the annotations which can be used in the application and the `dagger-compiler` is the annotation processor that will generate the code for us.  
+
+## Annotations
+
+`@Inject`: Dagger needs to know how to create the instances of the classes in the application graph. One way to do this is to annotate the class constructor with the `@Inject` annotation. 
+
+```kotlin
+// @Inject tells Dagger how to provide instances of this type
+// Dagger also knows that UserManager is a dependency
+class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
+    ...
+}
+```
+In the snippet above the `@Inject` annotation tells dagger how ti create the `RegistrationViewModel` and that `RegistrationViewModel` has a dependency which is of type `UserManager`. To add an annotation to a constructor in Kotlin one has to add the keyword `constructor` and instrodue the annotation just before it.
 
 # Testing
 
