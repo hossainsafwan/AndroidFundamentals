@@ -742,6 +742,9 @@ class UserManager @Inject constructor(private val storage: Storage) {
 
 `UserManager` is now singleton scoped.
 
+## Subcomponents
+
+We want the registration Fragments to reuse the same ViewModel coming from the Activity, but if the Activity changes, we want a different instance. We need to scope RegistrationViewModel to RegistrationActivity, for that, we can create a new Component for the registration flow and scope the ViewModel to that new registration Component. To achieve this we use Dagger subcomponents.
 
 # Testing
 
