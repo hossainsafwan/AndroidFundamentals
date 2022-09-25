@@ -623,6 +623,15 @@ class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
 ```
 In the snippet above the `@Inject` annotation tells dagger how ti create the `RegistrationViewModel` and that `RegistrationViewModel` has a dependency which is of type `UserManager`. To add an annotation to a constructor in Kotlin one has to add the keyword `constructor` and instrodue the annotation just before it.
 
+Dagger however doesn't know how to create instances of UserManager so the same has to be done to the constructor of the UserManager.
+```kotlin
+class UserManager @Inject constructor(private val storage: Storage) {
+    ...
+}
+```
+`Storage` however is an interface so we have to tell dagger how to instantiate it in a different manner.
+
+
 # Testing
 
 Why do we need tests?
