@@ -717,6 +717,30 @@ The following line inside `RegistrationActivity` requests dagger to populate the
 
 In order to use the same instance of a class as dependency every time we can use something called scoping. 
 
+Sometimes, you might want to provide the same instance of a dependency in a Component for multiple reasons:
+
+1. You want other types that have this type as dependency to share the same instance (e.g. UserManager in our case).
+2. An object is very expensive to create and you don't want to create a new instance every time it's declared as dependency (e.g. a Json parser).
+
+To scope a Component with `@Singleton`, all the classes also annotated with `@Singleton `will be scoped to its lifetime.
+For example:
+
+```kotlin
+// Definition of a Dagger component
+@Singleton
+@Component(modules = [StorageModule::class])
+interface AppComponent {
+```
+
+and 
+
+```kotllin
+@Singleton
+class UserManager @Inject constructor(private val storage: Storage) {
+...
+```
+
+`UserManager` is now singleton scoped.
 
 
 # Testing
