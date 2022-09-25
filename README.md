@@ -746,6 +746,55 @@ class UserManager @Inject constructor(private val storage: Storage) {
 
 We want the registration Fragments to reuse the same ViewModel coming from the Activity, but if the Activity changes, we want a different instance. We need to scope RegistrationViewModel to RegistrationActivity, for that, we can create a new Component for the registration flow and scope the ViewModel to that new registration Component. To achieve this we use Dagger subcomponents.
 
+Subcomponents are components that inherit and extend the object graph of a parent component. Thus, all objects provided in the parent component will be provided in the subcomponent too. In this way, an object from a subcomponent can depend on an object provided by the parent component.
+
+In order to declare a `Subcomponent` first we have to create an interface and annotate it with `@Subcomponent` and state the classes into which it will inject.
+
+```kotlin
+import com.example.android.dagger.registration.RegistrationActivity
+import com.example.android.dagger.registration.enterdetails.EnterDetailsFragment
+import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment
+import dagger.Subcomponent
+
+@Subcomponent
+interface RegistrationComponent {
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(): RegistrationComponent
+    }
+    // CLasses which can be injected by this component
+    fun inject(activity: RegistrationActivity)
+    fun inject(fragment: EnterDetailsFragment)
+    fun inject(fragment: TermsAndConditionsFragment)
+}
+```
+
+We have to now let the original component `AppComponent` know which components are its subcomponents. To do this we creat a Module and call it `AppSubcomponents` and declare the subcomponent.
+
+```kotlin
+import dagger.Module
+
+@Module(subcomponents = [RegistrationComponent::class])
+class AppSubcomponents {
+
+}
+```
+
+We then go to the original `AppComponent` and add the module we just created to let AppComponent know of its subcomponents and declare the subcomponent with the other modules.
+
+```kotlin
+// Definition of a Dagger component
+@Singleton
+@Component(modules = [StorageModule::class, AppSubcomponents::class])
+interface AppComponent {
+
+   ...
+```
+In order to scope the component. We should declare the scope not by its purpose such as `@RegistrationScope` but by the lifetime it fulfills such as `@ActivityScope`.
+
+
+
 # Testing
 
 Why do we need tests?
