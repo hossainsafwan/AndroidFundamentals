@@ -4,6 +4,7 @@ Lessons for Android Fundamentals
 - [Activities and Fragments](#activities-and-fragments)
 - [Architectural Design Patterns](#architectural-design-patterns)
 - [MVVM](#mvvm)
+- [Mobius](#mobius)
 - [Fragment Navigation](#fragment-navigation)
 - [View Binding](#view-binding) 
 - [ViewModels](#view-models)
@@ -111,6 +112,13 @@ There are three main types of architectural design patterns in Android:
 The following is the basic structure of Model View ViewModel architecture
 
 <img src="https://user-images.githubusercontent.com/22313316/138629117-c12744c3-8ace-466f-8401-23567d94e7d6.png" width=450/>
+
+# Mobius
+
+Mobius is a functional reactive framework for managing state evolution and side-effects, with add-ons for connecting to Android UIs and RxJava Observables. It emphasizes separation of concerns, testability, and isolating stateful parts of the code.
+
+
+<img src="https://user-images.githubusercontent.com/22313316/192460679-22afb5ba-e7fe-4128-acb3-1de7d3861323.png"/>
 
 # Fragment Navigation
 
