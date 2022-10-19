@@ -840,6 +840,10 @@ class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
 }
 ```
 
+To declare an activity or fragment as an entity to be injected into follow the following rules:
+An Activity injects Dagger in the onCreate method before calling super.
+A Fragment injects Dagger in the onAttach method after calling super.
+
 
 # Testing
 
