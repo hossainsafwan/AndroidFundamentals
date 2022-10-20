@@ -589,6 +589,10 @@ We can use the factory pattern to instantiate classes but that can also lead to 
 
 Dagger is responsible for creating the application graph of an application which is all the classes of its app and its dependenices.
 
+### What is a Dagger? 
+
+Dagger is a library which generates code to initialize classes by instantiating and providing all of its dependencies. It allows the developer to use a class without worrying about initializing all of its dependencies explicitly. 
+
 ## Adding Dagger to a project
 
 In the app level build.gradle file add the following:
@@ -643,6 +647,25 @@ Certain classes however, are instatiated by the the system such as Activities an
 
 When the `@Inject` annotation is used with a field it is telling dagger that it needs to populate the field with instances of its type.
 
+
+## Components
+### What is a Component? 
+
+Components in Dagger decide how objects need to be instantiated and in which order objects need to be instantiated.
+In the diagram above AuthComponent and MainComponent are sub-components of AppComponent. 
+Components also consist of their own scopes which ensures objects are instantiated and retained only for the lifetime that they are needed and 
+not for too long, therefore attenuating overhead. In the example above `Appcomponent` has `@Singleton` scope; `AuthComponent` has `@AuthScope` and
+`MainComponent` has `@MainScope`.
+
+
+## Scoping
+### What is a Scoping?
+
+Instead of an object existing for the lifetime of the application and creating unnecessary overhead. Scoping allows us to create objects which are alive for certain parts of the application. 
+A common type of scope is `@Singleton` scope which means objects instantiated using this scope will be alive for the lifetime of the application.
+
+By annotating a component with a scope we state to Dagger that, that component owns that respective scope 
+
 `@Component`
 
 We want dagger to create the graph of dependencies and be able to give us these dependecies from the graph.To make dagger do it we need to create an interface and annotate it with `@Component`. Inside the interace we let dagger know that `RegistrationActivity` requests injection. 
@@ -661,8 +684,13 @@ interface AppComponent {
 
 With the `inject(activity: RegistrationActivity)` method in the `@Component` interface, we're telling Dagger that `RegistrationActivity` requests injection and that it has to provide the dependencies which are annotated with `@Inject` (i.e. `RegistrationViewModel` as we defined in the previous step)
 
+## Modules
+### What is a Module?
+
+Modules in Dagger are units which consists of the dependencies and the locations where dependencies need to be injected `@ContributesAndroidInjector` states to Dagger where dependencies need to be injected and `@Provides` annotation tells Dagger what is the dependency. Modules are directed to components which control which dependencies need to go where.
+
 `@Module`
-Similat yo Components, modules tell dagger how to provide instances of a certain type. Dependencies are defined using `@Provides` and `@Binds` annotation. 
+Similar yo Components, modules tell dagger how to provide instances of a certain type. Dependencies are defined using `@Provides` and `@Binds` annotation. 
 
 The `@Binds` annotation is used to tell dagger the implementation it needs to create an instance of the `Storage` interface. In order to use the `@Binds` annotation we have to create an `abstract` method which ultimately also means that the class also has to be defined as `abstract`. The parameter of the method is the implementation of the interface. The following snippet defines how to use the `@Binds` annotation to tell dagger how to instantiate an inter=face with a specific implmementation. 
 
@@ -723,8 +751,14 @@ The following line inside `RegistrationActivity` requests dagger to populate the
 
 ## Scoping
 
-In order to use the same instance of a class as dependency every time we can use something called scoping. 
+### What is a Scoping?
 
+Instead of an object existing for the lifetime of the application and creating unnecessary overhead. Scoping allows us to create objects which are alive for certain parts of the application. 
+A common type of scope is `@Singleton` scope which means objects instantiated using this scope will be alive for the lifetime of the application.
+
+By annotating a component with a scope we state to Dagger that, that component owns that respective scope. 
+
+In order to use the same instance of a class as dependency every time we can use something called scoping. 
 Sometimes, you might want to provide the same instance of a dependency in a Component for multiple reasons:
 
 1. You want other types that have this type as dependency to share the same instance (e.g. UserManager in our case).
@@ -753,6 +787,8 @@ class UserManager @Inject constructor(private val storage: Storage) {
 ## Subcomponents
 
 We want the registration Fragments to reuse the same ViewModel coming from the Activity, but if the Activity changes, we want a different instance. We need to scope RegistrationViewModel to RegistrationActivity, for that, we can create a new Component for the registration flow and scope the ViewModel to that new registration Component. To achieve this we use Dagger subcomponents.
+
+### What are subcomponents?
 
 Subcomponents are components that inherit and extend the object graph of a parent component. Thus, all objects provided in the parent component will be provided in the subcomponent too. In this way, an object from a subcomponent can depend on an object provided by the parent component.
 
@@ -843,6 +879,11 @@ class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
 To declare an activity or fragment as an entity to be injected into follow the following rules:
 An Activity injects Dagger in the onCreate method before calling super.
 A Fragment injects Dagger in the onAttach method after calling super.
+
+## Subcomponent lifecycle
+
+In the same way the instance of AppComponent is kept in the Application class, since we want to access the AppComponent for the entire lifecycle of the application. Similarly, we must keep an instance of RegistrationComponent in the RegistrationActivity as for every registration activity we want to use a new registration component and access the dependency graph created by that component.
+
 
 
 # Testing
