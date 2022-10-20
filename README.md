@@ -654,17 +654,7 @@ When the `@Inject` annotation is used with a field it is telling dagger that it 
 Components in Dagger decide how objects need to be instantiated and in which order objects need to be instantiated.
 In the diagram above AuthComponent and MainComponent are sub-components of AppComponent. 
 Components also consist of their own scopes which ensures objects are instantiated and retained only for the lifetime that they are needed and 
-not for too long, therefore attenuating overhead. In the example above `Appcomponent` has `@Singleton` scope; `AuthComponent` has `@AuthScope` and
-`MainComponent` has `@MainScope`.
-
-
-## Scoping
-### What is a Scoping?
-
-Instead of an object existing for the lifetime of the application and creating unnecessary overhead. Scoping allows us to create objects which are alive for certain parts of the application. 
-A common type of scope is `@Singleton` scope which means objects instantiated using this scope will be alive for the lifetime of the application.
-
-By annotating a component with a scope we state to Dagger that, that component owns that respective scope 
+not for too long, therefore attenuating overhead.
 
 `@Component`
 
