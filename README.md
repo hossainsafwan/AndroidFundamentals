@@ -602,7 +602,7 @@ plugins {
    id 'com.android.application'
    id 'kotlin-android'
    id 'kotlin-android-extensions'
-   id 'kotlin-kapt'
+   id 'kotlin-kapt' //annotation processing is supported in Kotlin using kotlin-kapt
 }
 
 ...
@@ -610,8 +610,8 @@ plugins {
 dependencies {
     ...
     def dagger_version = "2.40"
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version" //contains all the annotations
+    kapt "com.google.dagger:dagger-compiler:$dagger_version" // contains the annotation processor which generates code for us
 }
 
 ```
