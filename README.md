@@ -17,7 +17,8 @@ Lessons for Android Fundamentals
 - [Use Cases](#use-cases)
 - [Useful](https://github.com/hossainsafwan/AndroidFundamentals/blob/master/Useful.md)
 - [Gradle](#gradle)
-- [Dagger](#dagger)
+- [Dagger](#dagger-theory)
+- [Dagger Implementations](#dagger-implementations)
 - [Testing](#testing)
 - [Regression Testing](#regression-testing)
 
@@ -572,7 +573,7 @@ gradlew file ensures the specific version of gradle that is to be installed and 
 Everything gradle can do is considered a task.
 and the gradlew file can be used to run specifc tasks ./gradlew build will build an app specified in the project.
 
-# Dagger
+# Dagger Theory
 
 [Dagger Codelab](https://developer.android.com/codelabs/android-dagger#0)
 
@@ -874,7 +875,13 @@ A Fragment injects Dagger in the onAttach method after calling super.
 
 In the same way the instance of AppComponent is kept in the Application class, since we want to access the AppComponent for the entire lifecycle of the application. Similarly, we must keep an instance of RegistrationComponent in the RegistrationActivity as for every registration activity we want to use a new registration component and access the dependency graph created by that component.
 
+# Dagger Implementations
 
+### How to constructor inject in dagger
+### How to field inject in dagger
+### How to inject implementations of interfaces in dagger
+### How to inject various implementations of same interace in dagger
+### How to scope in dagger using subcomponents
 
 # Testing
 
