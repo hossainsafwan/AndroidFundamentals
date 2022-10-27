@@ -880,7 +880,7 @@ In the same way the instance of AppComponent is kept in the Application class, s
 ### How to constructor inject in dagger
 ### How to field inject in dagger
 ### How to inject implementations of interfaces in dagger
-### How to inject various implementations of same interace in dagger
+### How to inject various implementations of same interface in dagger
 ### How to scope in dagger using subcomponents
 
 # Testing
