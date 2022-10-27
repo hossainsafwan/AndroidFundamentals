@@ -17,7 +17,7 @@ Lessons for Android Fundamentals
 - [Use Cases](#use-cases)
 - [Useful](https://github.com/hossainsafwan/AndroidFundamentals/blob/master/Useful.md)
 - [Gradle](#gradle)
-- [Dagger](#dagger-theory)
+- [Dagger Theory](#dagger-theory)
 - [Dagger Implementations](#dagger-implementations)
 - [Testing](#testing)
 - [Regression Testing](#regression-testing)
