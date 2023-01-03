@@ -877,6 +877,34 @@ In the same way the instance of AppComponent is kept in the Application class, s
 
 # Dagger Implementations
 
+### How to add dagger to your project
+
+In the app level build.gradle file add the following:
+
+```kotlin
+plugins {
+   id 'com.android.application'
+   id 'kotlin-android'
+   id 'kotlin-android-extensions'
+   id 'kotlin-kapt' //annotation processing is supported in Kotlin using kotlin-kapt
+}
+
+...
+
+dependencies {
+    ...
+    def dagger_version = "2.40"
+    implementation "com.google.dagger:dagger:$dagger_version" //contains all the annotations
+    kapt "com.google.dagger:dagger-compiler:$dagger_version" // contains the annotation processor which generates code for us
+}
+
+```
+
+
+Dagger is implemented using Java's annotation processor and generates code at compile time using an annotation processor, which are supported in Kotlin with the `kapt` compiler plugin. 
+
+The library `implementation "com.google.dagger:dagger:$dagger_version"` consists of all the annotations which can be used in the application and the `dagger-compiler` is the annotation processor that will generate the code for us.  
+
 ### How to constructor inject in dagger
 ### How to field inject in dagger
 ### How to inject implementations of interfaces in dagger
