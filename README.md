@@ -12,6 +12,7 @@ Lessons for Android Fundamentals
 - [Coroutines](#coroutines)
 - [Room Database Library](#room-database-library)
 - [Retrofit library]()
+- [RxJava](#rxjava)
 - [Flows](#flows)
 - [Clean Architecture](#clean-architecture)
 - [Use Cases](#use-cases)
@@ -505,6 +506,9 @@ abstract class SleepDatabase : RoomDatabase() {
 ![Screen Shot 2022-01-16 at 1 43 35 AM](https://user-images.githubusercontent.com/22313316/149650164-9bebba6d-4b0e-469e-a142-a028a81d6a3a.png)
 
 # Retrofit
+
+# RxJava
+[RxJava Article](https://medium.com/@gabrieldemattosleon/fundamentals-of-rxjava-with-kotlin-for-absolute-beginners-3d811350b701)
 
 # Flows
 
