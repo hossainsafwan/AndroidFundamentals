@@ -669,10 +669,10 @@ abstract class SleepDatabase : RoomDatabase() {
 
 # Clean Architecture
 
-One of the main reasons for using clean architecture is to avoid bloating our view models as out application starts gettinh larger and larger.
-To avoid this issue an optional domain layer is introduced which consists of use cases which perform one call, such as getAccounts, deleteAccount or addAccount.
+Clean architecture allows us to separate our app into layers which deal with data fetching, data-manipulation and data visualizing separately. 
+MVVM is generally part of the presentation layer. 
 
-The following Diagram shows overview of Clean Architecture:
+The following Diagram is a diagram of a layered architecture that follows the Clean Architecture principles and is usually used in Android development:
 
 ![Screen Shot 2022-05-11 at 11 10 04 AM](https://user-images.githubusercontent.com/22313316/167884630-71032188-356c-4188-b8b2-e53553c9fd89.png)
 
